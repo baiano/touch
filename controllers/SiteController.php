@@ -47,7 +47,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays homepage.
+     * Displays users lists.
      *
      * @return string
      */

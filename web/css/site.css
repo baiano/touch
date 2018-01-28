@@ -78,18 +78,32 @@ h1 {
 
 .btn-search {
     margin-top: 1em;
-    border-color: #FFF;
+    border: none;
+    background-color: #042c36;
     color: #FFF;
     text-transform: uppercase;
+    font-size: 11pt;
 }
 
 .btn-search:hover {
-    background-color: #042c36;
-    border-color: #042c36;
+    background-color: #5a97aa;
+    border-color: #FFF;
+    color: #FFF;
 }
 
 .form-search {
     margin-top: 2em;
 }
 
-@media(max-width:767px) {}
+@media(max-width:767px) {
+    .container>.navbar-header,
+    .container-fluid>.navbar-header,
+    .container>.navbar-collapse,
+    .container-fluid>.navbar-collapse {
+        margin: initial;
+        border: none;
+    }
+    h1 {
+        font-size: 4em;
+    }
+}
