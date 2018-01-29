@@ -45,6 +45,9 @@ class Repos extends Model
         // close curl resource to free up system resources 
         curl_close($ch);      
         $allRepositories = [];
+        if (isset($repos['message'])){
+            return [];
+        }
         foreach ($repos as $key => $repo){
             $allRepositories[$key]['name']      = $repo['name'];
             $allRepositories[$key]['fullName']  = $repo['full_name'];
@@ -86,6 +89,11 @@ class Repos extends Model
         }
         // close curl resource to free up system resources 
         curl_close($ch);      
+
+        if (isset($repo['message'])){
+            return [];
+        }
+                
         $row = [];
         $row['name'] = $repo['name'];
         $row['description'] = $repo['description'];

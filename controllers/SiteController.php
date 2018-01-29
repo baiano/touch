@@ -135,9 +135,7 @@ class SiteController extends Controller
     {
         $r = new Repos();
         $r = $r->getRepoDetails($userName,$repo);
-        // echo '<pre>';print_r($r);exit;
         $dataProvider =  new ArrayDataProvider([
-            'key'=>'stars',
             'allModels' => [$r],
             'sort' => [
                 'attributes' => ['stars', 'name', 'description'],

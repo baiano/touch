@@ -36,6 +36,8 @@ use yii\widgets\Breadcrumbs;
                             <?php
                                 echo GridView::widget([
                                     'dataProvider' => $dataProvider,
+                                    'showOnEmpty' => false,
+	                                'emptyText' => '<table><tbody></tbody></table>',
                                     'columns' =>[
                                         [
                                                 'attribute'=>'name',
@@ -46,6 +48,8 @@ use yii\widgets\Breadcrumbs;
                                             'format'=>'raw',
                                             'value' => function($data)
                                             {
+                                                if (!isset($data['url']))
+                                                    return '(not set)';
                                                 return '<a href="' . $data['url'] . '" title="Open" target="_blank">' . $data['url']  . '</a>';
                                             }
                                         ],
