@@ -60,7 +60,7 @@ a:hover {
 
 .home-form {
     position: relative;
-    top: -5em;
+    margin-top: -5em;
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -156,5 +156,8 @@ a:hover {
     }
     .container.repos {
         width: 100%;
+    }
+    .container-fluid{
+        margin-top: 0;
     }
 }
