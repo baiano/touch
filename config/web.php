@@ -47,6 +47,21 @@ $config = [
             // Use pretty URLs
             'enablePrettyUrl' => true,
             'rules' => [
+                [
+                    'pattern' => 'repos/<userName:.*>/<repo:.*>/',
+                    'route' => 'site/repo-view',
+                    'encodeParams' => false,
+                ],
+                [
+                    'pattern' => 'users/<userName:.*>/repos',
+                    'route' => 'site/repos',
+                    'encodeParams' => false,
+                ],
+                [
+                    'pattern' => 'users/<userName:.*>',
+                    'route' => 'site/users',
+                    'encodeParams' => false,
+                ],
                 '<alias:\w+>' => 'site/<alias>',
             ],
         ],
