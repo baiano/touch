@@ -77,7 +77,7 @@ class SiteController extends Controller
                 'attributes' => ['id'],
             ],
             'pagination' => [
-                'pageSize' => 20,
+                'pageSize' => 10,
             ],
         ]);
 
@@ -116,7 +116,7 @@ class SiteController extends Controller
                 'attributes' => ['stars', 'name', 'fullName', 'htmlUrl'],
             ],
             'pagination' => [
-                'pageSize' => 3,
+                'pageSize' => 10,
             ],
         ]);
         
@@ -143,7 +143,7 @@ class SiteController extends Controller
                 'attributes' => ['stars', 'name', 'description'],
             ],
             'pagination' => [
-                'pageSize' => 20,
+                'pageSize' => 10,
             ],
         ]);
         
