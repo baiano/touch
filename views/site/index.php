@@ -2,8 +2,6 @@
 
 /* @var $this yii\web\View */
 use yii\helpers\Url;
-
-$this->title = 'My Yii Application';
 ?>
 <div class="full-height vertical-container">
     <div class="vertical-item-center home-form">

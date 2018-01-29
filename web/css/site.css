@@ -40,6 +40,7 @@ a:hover {
 
 .container-fluid {
     height: 100%;
+    margin-top: -4em;
 }
 
 .footer {
@@ -121,17 +122,25 @@ a:hover {
     width: 50em;
 }
 
-.list-repos li {
+.list-repos li:not(.pagination.li) {
     border-bottom: 1px solid #FFF;
     margin-bottom: 1em;
 }
 
-.list-repos li:first-of-type {
+.list-repos li:first-of-type:not(.prev) {
     margin-top: 1em;
 }
 
 .btn-repo-detail {
     margin-bottom: 1em;
+}
+
+.breadcrumb {
+    background-color: #042c36;
+}
+
+.pagination {
+    justify-content: center;
 }
 
 @media(max-width:767px) {

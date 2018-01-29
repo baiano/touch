@@ -52,7 +52,7 @@ class User extends Model
         // close curl resource to free up system resources 
         curl_close($ch);      
         
-        if (!isset($user['username'])){
+        if (isset($user['message'])){
             return [];
         }
         $this->username  = $userName;

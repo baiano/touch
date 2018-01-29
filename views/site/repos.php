@@ -5,13 +5,25 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ListView;
 use yii\grid\GridView;
-
-$this->title = 'My Yii Application';
+use yii\widgets\Breadcrumbs;
 ?>
 <div class="full-height vertical-container">
     <div class="vertical-item-center">
         <div class="text-center">
             <div class="container repos">
+                <?php
+                echo Breadcrumbs::widget([
+                    'itemTemplate' => "<li><i>{link}</i></li>\n", // template for all links
+                    'links' => [
+                        [
+                            'label' => $userName,
+                            'url' => ['users/' . $userName],
+                            'template' => "<li><b>{link}</b></li>\n", // template for this link only
+                        ],
+                        'Repositories'
+                    ],
+                ]);
+                ?>
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="well well-sm">

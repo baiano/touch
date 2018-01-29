@@ -5,13 +5,30 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ListView;
 use yii\grid\GridView;
-
-$this->title = 'My Yii Application';
+use yii\widgets\Breadcrumbs;
 ?>
 <div class="full-height vertical-container">
     <div class="vertical-item-center">
         <div class="text-center">
             <div class="container repos">
+            <?php
+                echo Breadcrumbs::widget([
+                    'itemTemplate' => "<li><i>{link}</i></li>\n", 
+                    'links' => [
+                        [
+                            'label' => $userName,
+                            'url' => ['users/' . $userName],
+                            'template' => "<li><b>{link}</b></li>\n",
+                        ],
+                        [
+                            'label' => 'Repositories',
+                            'url' => ['users/' . $userName . '/repos'],
+                            'template' => "<li><b>{link}</b></li>\n", 
+                        ],
+                        $repo
+                    ],
+                ]);
+                ?>
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="well well-sm">
@@ -29,8 +46,7 @@ $this->title = 'My Yii Application';
                                             'format'=>'raw',
                                             'value' => function($data)
                                             {
-                                                return
-                                                Html::a($data['url'], [$data['url']], ['title' => 'View','class'=>'no-pjax']);
+                                                return '<a href="' . $data['url'] . '" title="Open" target="_blank">' . $data['url']  . '</a>';
                                             }
                                         ],
                                         'description',

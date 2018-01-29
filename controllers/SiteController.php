@@ -83,7 +83,8 @@ class SiteController extends Controller
 
 
         return $this->render('users', [
-            'dataProvider' => $dataProvider
+            'dataProvider'  => $dataProvider,
+            'userName'      => $userName
         ]);
     }
 
@@ -115,12 +116,13 @@ class SiteController extends Controller
                 'attributes' => ['stars', 'name', 'fullName', 'htmlUrl'],
             ],
             'pagination' => [
-                'pageSize' => 20,
+                'pageSize' => 3,
             ],
         ]);
         
         return $this->render('repos', [
-            'dataProvider' => $dataProvider,
+            'dataProvider'  => $dataProvider,
+            'userName'      => $userName
         ]);
     }
 
@@ -147,6 +149,8 @@ class SiteController extends Controller
         
         return $this->render('repo', [
             'dataProvider' => $dataProvider,
+            'userName'     => $userName,
+            'repo'         => $repo
         ]);
     }
 }

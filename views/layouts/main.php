@@ -10,6 +10,7 @@ use yii\bootstrap\NavBar;
 use yii\bootstrap\Nav;
 
 AppAsset::register($this);
+$this->title = 'Guilherme Lima Chaves';
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -25,16 +26,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<?php
-    NavBar::begin();
-    echo Nav::widget([
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']]
-        ],
-        'options' => ['class' => 'navbar-nav'],
-    ]);
-    NavBar::end();
-?>
+
 <div class="container-fluid">
     <?= Alert::widget() ?>
     <?= $content ?>
