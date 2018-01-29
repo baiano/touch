@@ -82,17 +82,17 @@ class Repos extends Model
             return ['error' => 'Repo not found!'];
         }
         else{
-            $repos = json_decode($output, true);
+            $repo = json_decode($output, true);
         }
         // close curl resource to free up system resources 
         curl_close($ch);      
-        $allRepositories = [];
-        foreach ($repos as $key => $repo){
-            $allRepositories[$key]['name']      = $repo['name'];
-            $allRepositories[$key]['fullName']  = $repo['full_name'];
-            $allRepositories[$key]['htmlUrl']   = $repo['html_url'];
-            $allRepositories[$key]['stars']     = $repo['stargazers_count'];
-        }
-        return $allRepositories;
+        $row = [];
+        $row['name'] = $repo['name'];
+        $row['description'] = $repo['description'];
+        $row['stars'] = $repo['stargazers_count'];
+        $row['language'] = $repo['language'];
+        $row['url'] = $repo['html_url'];
+        
+        return $row;
     }
 }

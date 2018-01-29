@@ -52,6 +52,9 @@ class User extends Model
         // close curl resource to free up system resources 
         curl_close($ch);      
         
+        if (!isset($user['username'])){
+            return [];
+        }
         $this->username  = $userName;
         $this->avatar    = empty($user['avatar_url']) ? 'http://placehold.it/300x300' : $user['avatar_url'];
         $this->following = $user['following'];

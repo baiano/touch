@@ -12,6 +12,7 @@ use yii\data\Sort;
 use yii\helpers\ArrayHelper;
 use yii\filters\VerbFilter;
 use app\models\User;
+use app\models\Repos;
 
 class SiteController extends Controller
 {
@@ -54,22 +55,24 @@ class SiteController extends Controller
     {
         $user = new User();
         $user = $user->getUser($userName);
-        $temp = ArrayHelper::toArray($user, [
-            'app\models\User' => [
-                'username',
-                'avatar',
-                'email',
-                'following',
-                'followers',
-                'bio'
-            ],
-        ]);
+        $u = [];
+        if (!empty($user)){
+            $temp = ArrayHelper::toArray($user, [
+                'app\models\User' => [
+                    'username',
+                    'avatar',
+                    'email',
+                    'following',
+                    'followers',
+                    'bio'
+                ],
+            ]);
 
-        $user = [];
-        $user[] = $temp;
+            $u[] = $temp;
+        }
 
         $dataProvider =  new ArrayDataProvider([
-            'allModels' => $user,
+            'allModels' => $u,
             'sort' => [
                 'attributes' => ['id'],
             ],
@@ -104,12 +107,7 @@ class SiteController extends Controller
         $repos = new User();
         $repos = $repos->getRepos($userName);
 
-        $sort = new Sort([
-            'attributes' => [
-                'stars' => SORT_DESC,
-            ],
-        ]);
-        // ArrayHelper::multisort($repos, ['stars'], [SORT_DESC]);
+        ArrayHelper::multisort($repos, ['stars'], [SORT_DESC]);
         $dataProvider =  new ArrayDataProvider([
             'key'=>'stars',
             'allModels' => $repos,
@@ -123,7 +121,6 @@ class SiteController extends Controller
         
         return $this->render('repos', [
             'dataProvider' => $dataProvider,
-            'sort' => $sort
         ]);
     }
 
@@ -134,29 +131,22 @@ class SiteController extends Controller
      */
     public function actionRepoView($userName, $repo)
     {
-        $repo = new Repos();
-        $repo = $repos->getRepoDetails($userName,$repo);
-
-        $sort = new Sort([
-            'attributes' => [
-                'stars' => SORT_DESC,
-            ],
-        ]);
-        // ArrayHelper::multisort($repos, ['stars'], [SORT_DESC]);
+        $r = new Repos();
+        $r = $r->getRepoDetails($userName,$repo);
+        // echo '<pre>';print_r($r);exit;
         $dataProvider =  new ArrayDataProvider([
             'key'=>'stars',
-            'allModels' => $repos,
+            'allModels' => [$r],
             'sort' => [
-                'attributes' => ['stars', 'name', 'fullName', 'htmlUrl'],
+                'attributes' => ['stars', 'name', 'description'],
             ],
             'pagination' => [
                 'pageSize' => 20,
             ],
         ]);
         
-        return $this->render('repos', [
+        return $this->render('repo', [
             'dataProvider' => $dataProvider,
-            'sort' => $sort
         ]);
     }
 }

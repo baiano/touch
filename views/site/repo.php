@@ -15,7 +15,6 @@ $this->title = 'My Yii Application';
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="well well-sm">
-                            <span>Click on column headers to reorder</span>
                             <ul class="list-unstyled list-repos">
                             <?php
                                 echo GridView::widget([
@@ -24,39 +23,19 @@ $this->title = 'My Yii Application';
                                         [
                                                 'attribute'=>'name',
                                                 'format'=>'raw',
-                                                'value' => function($data)
-                                                {
-                                                    return
-                                                    Html::a($data['name'], ['/repos/' . $data['fullName']], ['title' => 'View','class'=>'no-pjax']);
-                                                }
                                         ],
                                         [
-                                            'attribute'=>'fullName',
+                                            'attribute'=>'url',
                                             'format'=>'raw',
                                             'value' => function($data)
                                             {
                                                 return
-                                                Html::a($data['name'], ['/repos/' . $data['fullName']], ['title' => 'View','class'=>'no-pjax']);
+                                                Html::a($data['url'], [$data['url']], ['title' => 'View','class'=>'no-pjax']);
                                             }
                                         ],
-                                        [
-                                            'attribute'=>'name',
-                                            'format'=>'raw',
-                                            'value' => function($data)
-                                            {
-                                                return
-                                                Html::a($data['htmlUrl'], ['/repos/' . $data['fullName']], ['title' => 'View','class'=>'no-pjax']);
-                                            }
-                                        ],
-                                        [
-                                            'attribute'=>'stars',
-                                            'format'=>'raw',
-                                            'value' => function($data)
-                                            {
-                                                return
-                                                Html::a($data['stars'], ['/repos/' . $data['fullName']], ['title' => 'View','class'=>'no-pjax']);
-                                            }
-                                        ],
+                                        'description',
+                                        'language',
+                                        'stars'
                                     ]
                                 ]);
                                 // echo ListView::widget([
